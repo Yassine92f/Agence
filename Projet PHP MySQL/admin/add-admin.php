@@ -64,11 +64,11 @@
       if ($res == TRUE) {
         $_SESSION['add'] = "<div class='success'>Utilisateur ajouté.</div>";
         //Redirection de la page 
-        header("location:" . SITEURL . 'admin/manage-admin.php');
+        header("location:". 'add-admin.php');
       } else {
         $_SESSION['add'] = "<div class='error'>Echec création utilisateur.</div>";
         //Redirection de la page 
-        header("location:" . SITEURL . 'admin/add-admin.php');
+        header("location:" . 'add-admin.php');
       }
     }
     ?>

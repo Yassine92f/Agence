@@ -1,0 +1,25 @@
+
+{{ include('menu/index.html.twig') }}
+
+
+<?php
+    {{ include('constant/index.html.twig') }}
+    //Récupération de l'id de l'utilisateur à supprimer
+    $id = $_GET['id'];
+    //Créer la requète de suppression de l'utilisateur
+    $sql = "DELETE from tbl_admin where id=$id";
+    $res = mysqli_query($conn,$sql);
+
+    if($res==true)
+    {
+        $_SESSION['delete']= "<div class='success'>Utilisateur supprimé.</div>";
+        header('location:'manageAdmin');
+    }
+    else
+    {
+        $_SESSION['delete']="<div class='error'>Echec suppresion utilisateur.</div>";
+        header('location:'.'manageAdmin');
+    }
+    //Redirection vers la paage d'administration utilisateur
+
+?>
