@@ -1,0 +1,26 @@
+<?php 
+    include('../config/constants.php');
+    include('login-check.php');
+?>
+
+<html>
+    <head>
+        <title>Espace de gestion des réservations </title>
+        <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/addplat.css') }}">
+    </head>
+
+    <body>
+        <!Section Menu >
+        <div class="menu text-center">
+            <div class="wrapper">
+                <ul>
+                    <li><a href="home">Home</a></li>
+                    <li><a href="manageAdmin">Administration du site</a></li>
+                    <li><a href="manageCategorie">Catégories de Voyage</a></li>
+                    <li><a href="manageOrder">Gestion des réservations</a></li>
+                    <li><a href="logout.php">Déconnexion</a></li>
+                </ul>
+            </div>
+        </div>
+        <!Fin Section Menu >
