@@ -5,7 +5,6 @@
   <div class="main-content">
     <div class="wrapper">
       <h1 class="text-center">Administration du site</h1>
-      <br /><br />
       <?php
       if (isset($_SESSION['add'])) {
         echo $_SESSION['add'];
@@ -69,9 +68,9 @@
                   <td><?php echo $full_name; ?></td>
                   <td><?php echo $username; ?></td>
                   <td>
-                    <a href="<?php echo SITEURL; ?>admin/update-password.php?id=<?php echo $id; ?>" class="btn-primary">Modifier mot de passe</a>
-                    <a href="<?php echo SITEURL; ?>admin/update-admin.php?id=<?php echo $id; ?>" class="btn-secondary">Mettre à jour</a>
-                    <a href="<?php echo SITEURL; ?>admin/delete-admin.php?id=<?php echo $id; ?>" class="btn-danger">Effacer</a>
+                    <a href="update-password.php?id=<?php echo $id; ?>" class="btn-primary">Modifier mot de passe</a>
+                    <a href="update-admin.php?id=<?php echo $id; ?>" class="btn-secondary">Mettre à jour</a>
+                    <a href="delete-admin.php?id=<?php echo $id; ?>" class="btn-danger">Effacer</a>
                   </td>
                 </tr>
           <?php

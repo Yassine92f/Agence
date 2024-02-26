@@ -1,258 +1,397 @@
-/* 
-    Auteurs : BTS SIO Ensup 2023 2024
-    Fichier css pour le site
-*/
+@import url('https://fonts.googleapis.com/css?family=Oswald:500');
 
-
-*{
-    margin: 0 0;
-    padding: 0 0;
-    font-family: Arial, Helvetica, sans-serif;
-}
-.container{
-    width: 80%;
-    margin: 0 auto;
-    padding: 1%;
-}
-.img-responsive{
+.back {
+    position: fixed;
+    left: 0;
+    top: 0;
     width: 100%;
-}
-.img-curve{
-    border-radius: 15px;
+    height: 100%;
+    background-size: cover;
+     z-index: -1;
+     background-color: rgba(255, 255, 255, 0.643);
 }
 
-.text-right{
-    text-align: right;
+.thx {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 15px;
 }
-.text-center{
+
+nav {
+    width: 100%;
+    position: fixed;
+    top: 50px;
     text-align: center;
 }
-.text-left{
-    text-align: left;
-}
-.text-white{
-    color: white;
-}
 
-.clearfix{
-    clear: both;
-    float: none;
-}
-
-a{
-    color: #0984e3;
+nav a {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
     text-decoration: none;
-}
-a:hover{
-    color: #0984e3;
-}
-
-.btn{
-    padding: 1%;
-    border: none;
-    font-size: 1rem;
-    border-radius: 5px;
-}
-.btn-primary{
-    background-color: #ff6b81;
-    color: white;
-    cursor: pointer;
-}
-.btn-primary:hover{
-    color: white;
-    background-color: #ff4757;
-}
-h2{
-    color: #2f3542;
-    font-size: 2rem;
-    margin-bottom: 2%;
-}
-h3{
-    font-size: 1.5rem;
-}
-.float-container{
+    /* color: #16151b; */
+    margin: 0 15px;
+    font-size: 20px;
+    letter-spacing: 1px;
     position: relative;
+    display: inline-block;
 }
-.float-text{
+
+nav a:before {
+    content: '';
     position: absolute;
-    bottom: 50px;
-    left: 40%;
-}
-fieldset{
-    border: 1px solid white;
-    margin: 5%;
-    padding: 3%;
-    border-radius: 5px;
+    width: 100%;
+    height: 3px;
+    background: #16151b;
+    top: 47%;
+    animation: out 0.2s cubic-bezier(1, 0, 0.58, 0.97) 1 both;
 }
 
+nav a:hover:before {
+    animation: in 0.2s cubic-bezier(1, 0, 0.58, 0.97) 1 both;
 
-/* CSSS pour la section de navigation */
-
-.logo{
-    width: 10%;
-    float: left;
-}
-.menu{
-    line-height: 60px;
-}
-.menu ul{
-    list-style-type: none;
 }
 
-.menu ul li{
-    display: inline;
-    padding: 1%;
-    font-weight: bold;
+@keyframes in {
+    0% {
+        width: 0;
+        left: 0;
+        right: auto;
+    }
+
+    100% {
+        left: 0;
+        right: auto;
+        width: 100%;
+    }
 }
 
+@keyframes out {
+    0% {
+        width: 100%;
+        left: auto;
+        right: 0;
+    }
 
-/* CSS pour la section de recherche*/
+    100% {
+        width: 0;
+        left: auto;
+        right: 0;
+    }
+}
 
-.food-search{
-    background-image: url(../images/bg.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
+@keyframes show {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@for $i from 1 through 5 {
+    nav a:nth-child(#{$i}) {
+        animation:show .2s #{$i*0.1+1}s ease 1 both;
+    }
+}
+
+/* Section des liens vers les comptes sociaux */
+.social {
+    background-color: #222;
+    padding: 20px 0;
+}
+
+.social ul {
+    list-style: none;
+    padding: 0;
+}
+
+.social li {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+.social a {
+    text-decoration: none;
+    color: #007BFF;
+    font-size: 24px;
+    transition: color 0.3s;
+}
+
+.social a:hover {
+    color: #00FFA3;
+}
+
+/* Section du footer */
+.footer {
+    background-color: #000;
+    padding: 20px 0;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+}
+
+.footer a {
+    text-decoration: none;
+    color: #007BFF;
+    transition: color 0.3s;
+}
+
+.footer a:hover {
+    color: #00FFA3;
+}
+/* Section des destinations */
+.destinations {
+    background-color: transparent; 
+    padding: 50px 0;
+}
+
+.destinations h2 {
+    color: #007BFF;
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.destinations a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.destinations .container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.destinations .box-3 {
+    background-color: black;
+    border: 1px solid #007BFF;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    width: 30%; /* Chaque carré occupe 30% de l'espace */
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.destinations .box-3:hover {
+    background-color: #00FFA3;
+    border: 1px solid #00FFA3;
+}
+
+.destinations .box-3 img {
+    max-width: 100%;
+    height: auto;
+}
+
+.destinations .float-text {
+    font-size: 20px;
+    margin-top: 15px;
+    transition: color 0.3s;
+}
+
+.destinations .box-3:hover .float-text {
+    color: #007BFF;
+}
+
+#background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1000px;
+    z-index: -1;
+    background-attachment: fixed;
     background-position: center;
-    padding: 7% 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: brightness(1); /* Initial brightness, adjust as needed */
+    transition: filter 0.3s ease-in-out;
+}
+#background-image:hover {
+    filter: brightness(1.5); /* Adjust the brightness on hover as needed */
 }
 
-.food-search input[type="search"]{
-    width: 50%;
-    padding: 1%;
-    font-size: 1rem;
-    border: none;
-    border-radius: 5px;
+.content-container {
+    margin-top: 1000px;
 }
 
-
-/* CSS pour la section Categories */
-.categories{
-    padding: 4% 0;
+.parallax {
+    height: 80%; /* Adjust the height as needed */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
 }
 
-.box-3{
-    width: 28%;
-    float: left;
-    margin: 2%;
+.parallax h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
 }
 
-
-/* CSS pour la section des menus */
-.food-menu{
-    background-color: #ececec;
-    padding: 4% 0;
-}
-.food-menu-box{
-    width: 43%;
-    margin: 1%;
-    padding: 2%;
-    float: left;
-    background-color: white;
-    border-radius: 15px;
-}
-
-.food-menu-img{
-    width: 20%;
-    float: left;
-}
-
-.food-menu-desc{
-    width: 70%;
-    float: left;
-    margin-left: 8%;
-}
-
-.food-price{
-    font-size: 1.2rem;
-    margin: 2% 0;
-}
-.food-detail{
-    font-size: 1rem;
-    color: #747d8c;
-}
-
-
-/* CSS pour la section réseaux sociaux */
-.social ul{
-    list-style-type: none;
-}
-.social ul li{
-    display: inline;
-    padding: 1%;
-}
-
-/* CSS pour la partie commande */
-.order{
-    width: 50%;
+/* Other Section Styles */
+.container {
+    max-width: 1200px;
     margin: 0 auto;
-}
-.input-responsive{
-    width: 96%;
-    padding: 1%;
-    margin-bottom: 3%;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-}
-.order-label{
-    margin-bottom: 1%; 
-    font-weight: bold;
+    padding: 0 20px;
 }
 
+.destinations, .organized-travel, .special-offers {
+    background-color: #f5f5f5;
+    padding: 50px 0;
+}
 
+.destinations h2, .organized-travel h2, .special-offers h2 {
+    color: #007BFF;
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 30px;
+}
 
-/* CSS pour les taille d'écrans différents */
+/* Add more styles for other sections as needed */
 
-@media only screen and (max-width:768px){
-    .logo{
-        width: 80%;
-        float: none;
-        margin: 1% auto;
-    }
+/* Footer Styles */
+.footer {
+    background-color: #000;
+    padding: 20px 0;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+}
 
-    .menu ul{
-        text-align: center;
-    }
+.footer a {
+    color: #007BFF;
+    text-decoration: none;
+    transition: color 0.3s;
+}
 
-    .food-search input[type="search"]{
-        width: 90%;
-        padding: 2%;
-        margin-bottom: 3%;
-    }
+.footer a:hover {
+    color: #00FFA3;
+}
 
-    .btn{
-        width: 91%;
-        padding: 2%;
+@media only screen and (max-device-width: 1366px) {
+    .parallax {
+      background-attachment:initial;
     }
+  }
 
-    .food-search{
-        padding: 10% 0;
-    }
+  /* https://codepen.io/DuskoStamenic/pen/ZEvBKdw */
+@import "https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap";
 
-    .categories{
-        padding: 20% 0;
-    }
-    h2{
-        margin-bottom: 10%;
-    }
-    .box-3{
-        width: 100%;
-        margin: 4% auto;
-    }
+:root {
+  --color: rgb(63 63 63);
+}
 
-    .food-menu{
-        padding: 20% 0;
-    }
+/* body {
+  margin: 0;
+  font-family: Poppins, sans-serif;
+} */
 
-    .food-menu-box{
-        width: 90%;
-        padding: 5%;
-        margin-bottom: 5%;
-    }
-    .social{
-        padding: 5% 0;
-    }
-    .order{
-        width: 100%;
-    }
+.parallax-container {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  /*  this is where the magic happens:  */
+  background-attachment: fixed;
+
+  background-image: url(https://images.unsplash.com/photo-1519120944692-1a8d8cfc107f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=872&q=80);
+  background-position: center;
+  background-size: cover;
+  color: var(--color);
+  row-gap: 4rem;
+
+  text-align: center;
+}
+
+.buffer {
+  width: 100%;
+  min-height: 60vh;
+  background-color: var(--color);
+}
+
+.parallax-container2 {
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  padding: 6rem 0;
+  background-image: url(https://images.unsplash.com/photo-1585424536945-26663ea69d52?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=876&q=80);
+  gap: 1.6em;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+p {
+  max-width: 52ch;
+  padding: 1em;
+  line-height: 1.5;
+}
+
+a {
+  display: inline-block;
+  padding: 1em 3.5em;
+  border-radius: 0.3em;
+  color: rgb(0, 0, 0);
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+h3 {
+  margin-top: 1em;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.card {
+  display: flex;
+  max-width: 320px;
+  flex-direction: column;
+  align-items: center;
+
+  padding-bottom: 1rem;
+  border-radius: 0.5em;
+
+  background-color: white;
+  box-shadow: 0 29px 38px -15px rgb(0 0 0 / 43%);
+}
+
+.card-img {
+  width: 100%;
+  height: 200px;
+  border-radius: 0.3em;
+  background-position: center;
+  background-size: cover;
+}
+
+.card:nth-of-type(1) .card-img {
+  background-image: url(https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80);
+}
+
+.card:nth-of-type(2) .card-img {
+  background-image: url(https://images.unsplash.com/photo-1522163182402-834f871fd851?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1606&q=80);
+}
+
+.card:nth-of-type(3) .card-img {
+  background-image: url(https://images.unsplash.com/photo-1628746404106-4d3843b231b3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8Y2F2aW5nfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=900&q=60);
+}
+
+.card:nth-of-type(4) .card-img {
+  background-image: url(https://images.unsplash.com/photo-1496429862132-5ab36b6ae330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=900&q=80);
 }

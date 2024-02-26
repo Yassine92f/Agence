@@ -7,6 +7,7 @@
     <head>
         <title>Espace de gestion des commandes </title>
         <link rel="stylesheet" href="../css/admin.css">
+        <link rel="stylesheet" href="../css/addplat.css">
     </head>
 
     <body>
