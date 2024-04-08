@@ -8,7 +8,7 @@
       <?php
       if (isset($_SESSION['add'])) {
         echo $_SESSION['add'];
-        unset($_SESSION['add']); //Suppression du message 
+        unset($_SESSION['add']);
 
       }
       if (isset($_SESSION['delete'])) {
@@ -52,16 +52,13 @@
           $sql = "SELECT * from tbl_admin";
           $res = mysqli_query($conn, $sql);
           if ($res == TRUE) {
-            //Comptage des enregistrements pour savoir si la table contient des enregistrements 
             $rows = mysqli_num_rows($res);
             if ($rows > 0) {
-              $sn = 1; //Variable qui permet l'affichage par donnée croissante 
-              //Récupération des données 
+              $sn = 1;
               while ($rows = mysqli_fetch_assoc($res)) {
                 $id = $rows['id'];
                 $full_name = $rows['full_name'];
                 $username = $rows['username'];
-                //Affichage des données de la table 
           ?>
                 <tr>
                   <td><?php echo $sn++; ?> </td>

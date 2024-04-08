@@ -1,0 +1,17 @@
+{# templates/admin/show.html.twig #}
+
+{{ include('menu/index.html.twig') }}
+
+<div class="main-content">
+    <div class="wrapper">
+        <h1 class="text-center">Détails de l'administrateur</h1>
+        <ul>
+            <li><strong>Identifiant:</strong> {{ admin.id }}</li>
+            <li><strong>Nom:</strong> {{ admin.nom }}</li>
+            <li><strong>Mot de passe:</strong> {{ admin.mdp }}</li>
+            <li><strong>Utilisateur:</strong> {{ admin.utilisateur }}</li>
+        </ul>
+    </div>
+</div>
+
+{{ include('footer/index.html.twig') }}
