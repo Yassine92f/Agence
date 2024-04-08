@@ -45,10 +45,21 @@ class AdminType extends AbstractType
                     ]),
                 ]
             ])
-            ->add('save', SubmitType::class, [
-                'label' => 'Valider'
-            ]);
-    }
+            ->add('utilisateur', TextType::class, [
+                'label' => "Utilisateur",
+                'required' => true,
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Veuillez saisir un nom d utilisateur.'
+                    ]),
+                    new Length([
+                        'min' => 6,
+                        'minMessage' => 'L identifiant doit contenir au moins {{ limit }} caractères.'
+                    ]),
+                ]
+            ])
+            
+    ;}
 
     public function configureOptions(OptionsResolver $resolver)
     {

@@ -6,7 +6,7 @@ use App\Repository\AdminRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: AdminRepository::class)]
-#[ORM\Table(name: '`admin`')]
+#[ORM\Table(name: 'tbl_admin')]
 class Admin
 {
     #[ORM\Id]
@@ -19,6 +19,9 @@ class Admin
 
     #[ORM\Column(length: 255)]
     private ?string $mdp = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $utilisateur = null;
 
     public function getId(): ?int
     {
@@ -48,4 +51,17 @@ class Admin
 
         return $this;
     }
+
+    public function setUtilisateur(string $utilisateur): static
+    {
+        $this->utilisateur = $utilisateur;
+    
+        return $this;
+    }
+    
+    public function getUtilisateur(): ?string
+    {
+        return $this->utilisateur;
+    }
+    
 }

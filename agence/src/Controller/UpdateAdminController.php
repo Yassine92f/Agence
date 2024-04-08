@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -7,44 +8,37 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use App\Form\AdminType;
 use App\Entity\Admin;
+use Doctrine\ORM\EntityManagerInterface;
 
 class UpdateAdminController extends AbstractController
 {
-    #[Route('/updateAdmin', name: 'app_updateAdmin' ,methods:['GET', 'POST'])]
-    public function index(Request $request): Response
+    private EntityManagerInterface $entityManager;
+
+    public function __construct(EntityManagerInterface $entityManager)
     {
-        // Création d'une nouvelle instance de l'entité Admin
-        $admin = new Admin();
+        $this->entityManager = $entityManager;
+    }
 
-        // Création du formulaire en utilisant le formulaire AdminType
-        $form = $this->createForm(AdminType::class, $admin);
-
-        // Gestion de la soumission du formulaire
-        $form->handleRequest($request);
-
-        // Vérifier si le formulaire a été soumis et s'il est valide
-        if ($form->isSubmitted() && $form->isValid()) {
-            // Récupération des données du formulaire
-            $name = $form->get('name')->getData();
-            $utilisateur = $form->get('utilisateur')->getData();
-            $mdp = $form->get('mdp')->getData();
-
-            // Faites quelque chose avec les données, comme les enregistrer en base de données
-            // Par exemple :
-            // $admin->setName($name);
-            // $admin->setUtilisateur($utilisateur);
-            // $admin->setMdp($mdp);
-            // $entityManager = $this->getDoctrine()->getManager();
-            // $entityManager->persist($admin);
-            // $entityManager->flush();
-
-            // Rediriger ou afficher une réponse
-            // return $this->redirectToRoute('some_route');
-            // ou
-            // return new Response('Données soumises avec succès');
+    #[Route('/updateAdmin', name: 'app_updateAdmin' ,methods:['GET', 'POST'])]
+    public function index(Request $request, Admin $admin = null): Response
+    {
+        if (!$admin) {
+            $admin = new Admin();
         }
 
-        // Affichage du formulaire
+        $form = $this->createForm(AdminType::class, $admin);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->entityManager->persist($admin);
+            $this->entityManager->flush();
+
+            $this->addFlash('success', 'Mise à jour réussie.');
+
+            return $this->redirect('http://localhost:8000/manageAdmin');
+        }
+
         return $this->render('updateAdmin/index.html.twig', [
             'form' => $form->createView(),
         ]);
